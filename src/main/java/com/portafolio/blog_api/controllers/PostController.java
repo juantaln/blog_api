@@ -20,9 +20,18 @@ public class PostController {
 
    
     @PostMapping
-    public ResponseEntity<Post> createPost(@RequestBody Post post) { 
-        Post newPost = postService.createPost(post);
-        return new ResponseEntity<>(newPost, HttpStatus.CREATED); 
+    public ResponseEntity<?> createPost(@RequestBody Post post) { 
+ 
+        if (post.getUser() == null || post.getUser().getId() == null) {
+            
+            return new ResponseEntity<>("El ID del usuario es requerido", HttpStatus.BAD_REQUEST);
+        }
+        Long userId = post.getUser().getId();
+        
+      
+        Post newPost = postService.createPost(post, userId);
+        
+        return new ResponseEntity<>(newPost, HttpStatus.CREATED);
     }
 
     
