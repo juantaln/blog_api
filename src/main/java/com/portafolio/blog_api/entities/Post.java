@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "posts") 
 @Getter 
@@ -23,6 +25,7 @@ public class Post {
 
     private LocalDateTime creationDate;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
