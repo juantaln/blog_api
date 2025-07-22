@@ -14,7 +14,7 @@ public class PostResponseDto {
     private LocalDateTime creationDate;
     private String authorUsername; 
 
-    public Long getId() { 
+        public Long getId() { 
         return id;
      }
     public void setId(Long id) { 
