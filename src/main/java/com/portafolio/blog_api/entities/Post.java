@@ -25,6 +25,10 @@ public class Post {
 
     private LocalDateTime creationDate;
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name = "user_id", nullable = false)
