@@ -19,15 +19,14 @@ public class PostController {
 
 
     @PostMapping
-    public ResponseEntity<?> createPost(@RequestBody PostRequestDto postRequestDto) {
+    public ResponseEntity<?> createPost(@RequestBody PostRequestDto postRequestDto) { 
         if (postRequestDto.getUserId() == null) {
             return new ResponseEntity<>("El ID del usuario es requerido", HttpStatus.BAD_REQUEST);
         }
-    
+   
         PostResponseDto createdPost = postService.createPost(postRequestDto); 
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
-
     @GetMapping
     public ResponseEntity<List<PostResponseDto>> getAllPosts() {
         List<PostResponseDto> posts = postService.getAllPosts();
